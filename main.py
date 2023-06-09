@@ -1,31 +1,51 @@
 import random
+import time
+from functions import bubble_sort
+from functions import check_sort
+from functions import selection_sort
 
-def bubble_sort():
-    print("bubble sort started :)")
-
-
-# function to check the (hopefully) sorted array
-def check_sort(numArr):
-    for x in range(100):
-        if x > 0:
-            if numArr[x] < numArr[x-1]:
-                return -1
-    return 0
-            
-
-
-
-
-
-print("hello beotch")
+# main block here
 numArr = []
-numArr = [random.randint(0,1000) for i in range(100)]
+numArr = [random.randint(0,10000) for i in range(5)]
 
-for x in range(100):
-    print(numArr[x])
+numArrBubble = []
+numArrSelection = []
 
-if check_sort(numArr) == 0:
+numArrBubble = numArr.copy()
+numArrSelection = numArr.copy()
+
+# print(numArr)
+# print(numArrBubble)
+# print(numArrSelection)
+
+startTime = time.time()
+
+bubble_sort(numArrBubble)
+
+if check_sort(numArrBubble) == 0:
     print("Array sorted")
 else:
     print("Array not sorted")
+
+print((time.time() - startTime)*1000, " ms")
+
+# print(numArr)
+# print(numArrBubble)
+# print(numArrSelection)
+
+startTime = time.time()
+
+selection_sort(numArrSelection)
+
+if check_sort(numArrSelection) == 0:
+    print("Array sorted")
+else:
+    print("Array not sorted")
+
+print((time.time() - startTime)*1000, " ms")
+
+
+# print(numArr)
+# print(numArrBubble)
+# print(numArrSelection)
         
