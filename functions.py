@@ -24,6 +24,36 @@ def selection_sort(numArr):
                 min_index = j
         (numArr[ind], numArr[min_index]) = (numArr[min_index], numArr[ind])
 
+
+
+def partition(numArr, low, high):
+    pivot = numArr[high]
+
+    i = low - 1
+
+    for j in range(low, high):
+        if numArr[j] <= pivot:
+            i = i + 1
+
+            (numArr[i], numArr[j]) = [numArr[j], numArr[i]]
+
+    (numArr[i + 1], numArr[high]) = (numArr[high], numArr[i + 1])
+
+    return i + 1
+
+def quick_sort(numArr, low, high):
+
+    if low < high:
+        pi = partition(numArr, low, high)
+
+        quick_sort(numArr, low, pi - 1)
+
+        quick_sort(numArr, pi + 1, high)
+
+
+
+
+
 # function to check the (hopefully) sorted array
 def check_sort(numArr):
     for x in range(len(numArr)):
