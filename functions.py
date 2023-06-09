@@ -1,5 +1,6 @@
+import time
 # bubble sort function
-def bubble_sort(numArr):
+def bubble_sort(numArr, drawData, speed):
     n = len(numArr)
 
     isSwapped = False
@@ -9,11 +10,14 @@ def bubble_sort(numArr):
             if numArr[j] > numArr[j + 1]:
                 isSwapped = True
                 numArr[j], numArr[j + 1] = numArr[j + 1], numArr[j]
+                drawData(numArr, ["#F7E806" if x == j or x == j+1 else "#4204CC" for x in range(len(numArr))])
+                time.sleep(speed)
+                
         if not isSwapped:
             return
 
 #selection sort function
-def selection_sort(numArr):
+def selection_sort(numArr, drawData, speed):
     size = len(numArr)
     for ind in range(size):
         min_index = ind
@@ -21,10 +25,12 @@ def selection_sort(numArr):
             if numArr[j] < numArr[min_index]:
                 min_index = j
         (numArr[ind], numArr[min_index]) = (numArr[min_index], numArr[ind])
+        drawData(numArr, ["#F7E806" if x == j or x == j+1 else "#4204CC" for x in range(len(numArr))])
+        time.sleep(speed)
 
 
 
-def partition(numArr, low, high):
+def partition(numArr, low, high, drawData, speed):
     pivot = numArr[high]
 
     i = low - 1
@@ -33,20 +39,24 @@ def partition(numArr, low, high):
         if numArr[j] <= pivot:
             i = i + 1
 
-            (numArr[i], numArr[j]) = [numArr[j], numArr[i]]
+            (numArr[i], numArr[j]) = (numArr[j], numArr[i])
+            drawData(numArr, ["#F7E806" if x == j or x == j+1 else "#4204CC" for x in range(len(numArr))])
+            time.sleep(speed)
 
     (numArr[i + 1], numArr[high]) = (numArr[high], numArr[i + 1])
+    drawData(numArr, ["#F7E806" if x == j or x == j+1 else "#4204CC" for x in range(len(numArr))])
+    time.sleep(speed)
 
     return i + 1
 
-def quick_sort(numArr, low, high):
+def quick_sort(numArr, low, high, drawData, speed):
 
     if low < high:
-        pi = partition(numArr, low, high)
+        pi = partition(numArr, low, high, drawData, speed)
 
-        quick_sort(numArr, low, pi - 1)
+        quick_sort(numArr, low, pi - 1, drawData, speed)
 
-        quick_sort(numArr, pi + 1, high)
+        quick_sort(numArr, pi + 1, high, drawData, speed)
 
 
 
