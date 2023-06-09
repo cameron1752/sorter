@@ -8,6 +8,7 @@ from functions import bubble_sort
 from functions import check_sort
 from functions import selection_sort
 from functions import quick_sort
+from functions import merge_sort
 from gui import MyFrame
 
 window = Tk()
@@ -21,7 +22,7 @@ else:
     size = 100
 
 algorithm_name = StringVar()
-algo_list = ['Bubble Sort', 'Selection Sort', 'Quick Sort']
+algo_list = ['Bubble Sort', 'Selection Sort', 'Quick Sort', 'Merge Sort']
 
 speed_name = StringVar()
 speed_list = ['Fast', 'Medium', 'Slow']
@@ -37,8 +38,8 @@ def set_speed():
 
 def drawData(data, color):
     canvas.delete("all")
-    canvas_width = 1600
-    canvas_height = 900
+    canvas_width = 1500
+    canvas_height = 850
     x_width = canvas_width / (len(data) + 1)
     offset = 4
     spacing = 2
@@ -71,6 +72,10 @@ def sort():
         selection_sort(numArr, drawData, set_speed())
     elif algo_menu.get() == 'Quick Sort':
         quick_sort(numArr, 0, len(numArr) - 1, drawData, set_speed())
+    elif algo_menu.get() == 'Merge Sort':
+        merge_sort(numArr, 0, len(numArr) - 1, drawData, set_speed())
+
+    drawData(numArr, ["#4204CC" for x in range(len(numArr))])
 
 
 UI_frame = Frame(window, width= 1600, height=900, bg="#FFFFFF")
