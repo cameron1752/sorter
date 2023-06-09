@@ -1,10 +1,12 @@
 import random
 import time
 import sys
+import wx
 from functions import bubble_sort
 from functions import check_sort
 from functions import selection_sort
 from functions import quick_sort
+from gui import MyFrame
 
 if len(sys.argv) > 1:
     size = int(sys.argv[1])
@@ -30,6 +32,7 @@ numArrQuick = numArr.copy()
 
 startTime = time.time()
 
+print("bubble sort started :)")
 bubble_sort(numArrBubble)
 
 if check_sort(numArrBubble) == 0:
@@ -46,6 +49,7 @@ print((time.time() - startTime)*1000, " ms")
 
 startTime = time.time()
 
+print("selection sort started :)")
 selection_sort(numArrSelection)
 
 if check_sort(numArrSelection) == 0:
@@ -64,6 +68,7 @@ print((time.time() - startTime)*1000, " ms")
 
 startTime = time.time()
 
+print("quick sort started :)")
 quick_sort(numArrQuick, 0, len(numArrQuick) - 1)
 
 if check_sort(numArrQuick) == 0:
@@ -77,3 +82,7 @@ print((time.time() - startTime)*1000, " ms")
 # print(numArrBubble)
 # print(numArrSelection)
 # print (numArrQuick)
+
+app = wx.App()
+frame = MyFrame()
+app.MainLoop()

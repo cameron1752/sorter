@@ -1,6 +1,5 @@
 # bubble sort function
 def bubble_sort(numArr):
-    print("bubble sort started :)")
     n = len(numArr)
 
     isSwapped = False
@@ -15,7 +14,6 @@ def bubble_sort(numArr):
 
 #selection sort function
 def selection_sort(numArr):
-    print("selection sort started :)")
     size = len(numArr)
     for ind in range(size):
         min_index = ind
